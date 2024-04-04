@@ -15,8 +15,10 @@ function inserir(body, functionCallback) {
     });
 }
 
-function editar() {
-
+function editar(id_tarefa, body, functionCallback) {
+    db.all('UPDATE tarefas SET descricao=?, concluido=? WHERE id_tarefa=? returning id_tarefa', [body.descricao, body.concluido, id_tarefa], function (err, rows) {
+        functionCallback(err, rows);
+    });
 }
 
 function excluir() {

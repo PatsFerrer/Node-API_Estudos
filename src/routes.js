@@ -7,8 +7,8 @@ routes.get('/tarefas', controllersTarefa.listar);
 
 routes.post('/tarefas', controllersTarefa.inserir);
 
-routes.put('/tarefas', controllersTarefa.editar);
+routes.put('/tarefas/:id_tarefa', controllersTarefa.editar);
 
-routes.delete('/tarefas', controllersTarefa.excluir);
+routes.delete('/tarefas/:id_tarefa', controllersTarefa.excluir);
 
 export default routes;

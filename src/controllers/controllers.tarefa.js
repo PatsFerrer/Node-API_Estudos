@@ -15,13 +15,19 @@ function inserir(req, res) {
         if (err) {
             res.status(500).send(err);
         } else {
-            res.status(200).send(result[0]);
+            res.status(201).send(result[0]);
         }
     })
 }
 
 function editar(req, res) {
-    res.status(200).send('Editar uma tarefa!');
+    serviceTarefa.editar(req.params.id_tarefa, req.body, function (err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(result[0]);
+        }
+    })
 }
 
 function excluir(req, res) {
