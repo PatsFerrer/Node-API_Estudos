@@ -1,6 +1,13 @@
+import serviceTarefa from "../services/service.tarefa.js";
+
 function listar(req, res) {
-    res.status(200).send('Listando as tarefas!');
-    // acessar banco de dados
+    serviceTarefa.listar(function (err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(result);
+        }
+    })
 }
 
 function inserir(req, res) {
