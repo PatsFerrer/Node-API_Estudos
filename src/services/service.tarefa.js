@@ -21,8 +21,10 @@ function editar(id_tarefa, body, functionCallback) {
     });
 }
 
-function excluir() {
-
+function excluir(id_tarefa, functionCallback) {
+    db.all('DELETE FROM tarefas WHERE id_tarefa=? returning id_tarefa', [id_tarefa], function (err, rows) {
+        functionCallback(err, rows);
+    });
 }
 
 export default { listar, inserir, editar, excluir }

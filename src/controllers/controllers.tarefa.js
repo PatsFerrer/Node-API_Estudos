@@ -31,7 +31,13 @@ function editar(req, res) {
 }
 
 function excluir(req, res) {
-    res.status(200).send('Excluir uma tarefa!');
+    serviceTarefa.excluir(req.params.id_tarefa, function (err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(result[0]);
+        }
+    })
 }
 
 export default { listar, inserir, editar, excluir };
