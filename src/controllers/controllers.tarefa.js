@@ -11,7 +11,13 @@ function listar(req, res) {
 }
 
 function inserir(req, res) {
-    res.status(201).send('Inserir as tarefas!');
+    serviceTarefa.inserir(req.body, function (err, result) {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(200).send(result[0]);
+        }
+    })
 }
 
 function editar(req, res) {

@@ -9,8 +9,10 @@ function listar(functionCallback) {
     });
 }
 
-function inserir() {
-
+function inserir(body, functionCallback) {
+    db.all('INSERT INTO tarefas(descricao, concluido) VALUES(?, ?) returning id_tarefa', [body.descricao, body.concluido], function (err, rows) {
+        functionCallback(err, rows);
+    });
 }
 
 function editar() {
