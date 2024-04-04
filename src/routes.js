@@ -1,21 +1,14 @@
 import { Router } from "express";
+import controllersTarefa from "./controllers/controllers.tarefa.js";
 
 const routes = Router();
 
-routes.get('/tarefas', function (req, res) {
-    res.status(200).send('Listando as tarefas!');
-});
+routes.get('/tarefas', controllersTarefa.listar);
 
-routes.post('/tarefas', function (req, res) {
-    res.status(201).send('Inserir as tarefas!');
-});
+routes.post('/tarefas', controllersTarefa.inserir);
 
-routes.put('/tarefas', function (req, res) {
-    res.status(200).send('Editar uma tarefa!');
-});
+routes.put('/tarefas', controllersTarefa.editar);
 
-routes.delete('/tarefas', function (req, res) {
-    res.status(200).send('Excluir uma tarefa!');
-});
+routes.delete('/tarefas', controllersTarefa.excluir);
 
 export default routes;
