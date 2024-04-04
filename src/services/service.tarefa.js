@@ -1,8 +1,12 @@
+import { db } from "../config/database.js";
 // conexão com o banco
 
 function listar(functionCallback) {
-    // simulando um banco p testar no postman
-    functionCallback({erro: 'Teste de erro'}, null);
+    let sql = "SELECT * FROM tarefas";
+
+    db.all(sql, [], function (err, rows) {
+        functionCallback(err, rows);
+    });
 }
 
 function inserir() {
